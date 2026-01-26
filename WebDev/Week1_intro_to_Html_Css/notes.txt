@@ -1,0 +1,300 @@
+HTML stands for hyper text markup language. It is the foundation of building `unstyled` websites.
+
+### Step 1 - Creating a simple HTML file locally
+
+1. Create a folder on your machine called `website`
+2. Add a `index.html` file inside it
+3. Write the following code in it - 
+
+
+<html>
+	<title>
+		Visual Studio Code - Code Editor
+	</title>
+</html>
+
+
+Now open this in your browser
+
+<!DOCTYPE html> <!-- used to tell this is a html file-->
+<html lang="en"> <!-- used to tell this is a html fil and also the language used is english -->
+<head> <!-- contains metadata stuff along with css link-->
+    <meta charset="UTF-8"> <!-- etlls encoding of the written data in file-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- gives name width and scale-->
+    <title>Document</title>  <!--name of the website on the browser tab section-->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">. <!--image for tab /fevicon-->
+    <link rel="stylesheet" href="style.css"> <!--Links css-->
+</head>
+<body>  <!--code is written here-->
+    
+    <script src="script.js"></script> <!--Links script-->
+</body>
+</html> <!--All the code is written inside this-->
+
+
+### Step 2 - Tags
+
+1. div, span
+2. head
+3. body
+4. h1, h2, h3, h4, h5, h6
+5. b, i, u
+6. a
+7. img
+8. input
+9. button
+10. br
+
+**Media**
+- `video`, `audio`, `iframe`
+
+# CSS
+
+CSS stands for Cascading Style Sheets. It is used to style our applications
+
+You can add CSS to your HTML app by using - 
+
+1. The  `style` attribute (inline styles)
+2. In an external css file
+3. In the head tag of the HTML file.
+
+### Approach #1 - Inline styles
+
+Try updating the `body` tag in the last style as follows - 
+
+```rust
+<body style="background-color: black;">
+... rest of the code
+</body>
+```
+
+### Approach #2 - External styles
+
+1. Add a new file called index.css
+2. Add the following code in it
+
+```rust
+body {
+    background-color: black;
+}
+```
+
+- Update index.html
+
+```rust
+<html>
+	<title>
+		Visual Studio Code - Code Editor
+	</title>
+	<link rel="stylesheet" href="index.css">
+</html>
+<body>
+... rest of the code
+</body>
+```
+
+
+### Common style attributes
+
+- `color`: Sets the text color.
+- `background-color`: Sets the background color.
+- `font-size`: Sets the size of the text.
+    - `font-weight` : How bold should the font/text be
+- `margin`: Sets the outer space around an element.
+- `padding`: Sets the inner space within an element.
+- `border`: Sets the border around an element.
+- `width, height`
+- `box-shadow`
+
+### Classes and ids
+
+In CSS, classes and IDs are used as selectors to apply styles to HTML elements. They help in targeting 
+specific elements for styling and can be used to enhance the modularity and reusability of CSS code.
+
+
+
+Flexbox is a CSS layout model designed to help with the arrangement of items within a container.
+Flex-start,Flex-end,center,space-around,space-between,space-evenly
+
+Update the website to the following - 
+
+```rust
+<html>
+	<title>
+		Visual Studio Code - Code Editor
+	</title>
+</html>
+<body>
+	<div style="display: flex;">
+		<div>Visual Studio Code</div>
+		<a href="/">Docs</span> 
+		<a href="/">Updates</span> 
+		<a href="/">Blog</span> 
+		<a href="/">API</span> 
+		<a href="/">Extensions</span> 
+		<a href="/">FAQs</span>
+		<a href="/">Learn</span>
+	</div>
+	<div>
+		<input type="text" placeholder="Search Docs">
+		<button>Download</button>
+	</div>
+	<br/>
+
+	<div>
+		<a href="/">Version 1.82</a> is now available! Read about the new features and fixes from July.
+	</div>
+
+	<br/>
+</body>
+```
+
+Notice that the elements are positioned right next to each other even though `Visual Studio code` is inside a `div`
+
+### Justify content
+
+Try experimenting with the `justify-centent`  property.  It tells how to space the elements across the main axis 
+(`x` axis if `flex-direction` is row, `y` axis if `flex-direction` is column)
+
+### Align items
+
+Try experimenting with the `align-items`  property.  It tells how to space the elements across the main axis 
+(`y` axis if `flex-direction` is row, `x` axis if `flex-direction` is column)
+
+
+Stylize websites
+
+# Fonts
+
+- **Add a `<link>` in `<head>`** pointing to the font:
+    
+    ```html
+    <linkrel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    ```
+    
+    https://fonts.google.com/
+    
+- **Apply it in CSS:**
+    
+    ```css
+    body {
+    	font-family:'Roboto', sans-serif;
+    }
+    ```
+    
+
+This loads the font from Google and uses it in your page.
+
+<aside>
+💡
+
+Question — should you use the google link to get the fonts, or should u download it locally and import it locally from your own project?
+
+</aside>
+
+Popular fonts
+
+```jsx
+Manrope
+DM Sans
+Geist
+Inter
+Poppins
+Onest
+Cal sans
+Work sans
+Google sans
+Playfair Display
+```
+
+https://fontjoy.com/https://www.fontshare.com/https://uncut.wtf/
+
+# Contents of the page
+
+What all you’re writing on the page.
+
+# Micro animations/interactions
+
+ref - motion.dev
+
+# Colors
+
+[https://uicolors.app](https://uicolors.app/)
+
+[https://huemint.com](https://huemint.com/)
+
+[https://www.realtimecolors.com](https://www.realtimecolors.com/)
+
+## Linear Gradient
+
+```jsx
+background: linear-gradient(direction, color1, color2, ...);
+```
+
+```jsx
+/* Top to bottom (default) */
+background: linear-gradient(red, blue);
+
+/* Left to right */
+background: linear-gradient(to right, red, blue);
+
+/* Diagonal */
+background: linear-gradient(to bottom right, red, blue);
+
+/* Using angles */
+background: linear-gradient(45deg, red, blue);
+```
+
+## Radial Gradient
+
+```jsx
+background: radial-gradient(circle, color1, color2, ...);
+background: radial-gradient(circle, red, blue, green)
+background: radial-gradient(red, blue, green)
+```
+
+## Hover effects
+
+```html
+<html>
+	<title>
+		Visual Studio Code - Code Editor
+	</title>
+    <style>
+        button {
+            background-color: white;
+            color: black;
+            padding: 20;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            box-shadow: 0 0 2px 2px white ; /* outer border */
+        }
+    </style>
+</html>
+<body style="background-color: black;">
+	<div>
+        <button class="button">Download for macos</button>
+    </div>
+
+	<br/>
+</body>
+```
+
+
+
+
+
+
+Assignment1 - center a div Element or card
+
+Assignment 2 - Clone Elevenlabs contact-sales form
+[https://elevenlabs.io/contact-sale](https://elevenlabs.io/contact-sales)
+
+Assignment 3 -  Stretch assignment clone https://www.winterfell.dev/
+
+Assignment 4 - clone 100xdevs homepage

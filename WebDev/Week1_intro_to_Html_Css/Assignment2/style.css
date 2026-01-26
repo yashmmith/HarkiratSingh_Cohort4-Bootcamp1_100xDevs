@@ -1,0 +1,197 @@
+/* grey -#1C1C1C.  #FFFFFF. #6E6E6E*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #333;
+    background-color: #f4f4f4; 
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.left{
+    background-color: #1C1C1C;
+    height: 100vh;
+    width: 50vw;
+    display: flex ;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 0;
+    justify-content: space-between;
+    position:relative
+}
+
+.right{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 50vw;
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+} 
+.rh1{
+    color: #1C1C1C;
+    font-weight: 200;
+    font-size: 25px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+.rh2{
+    color: #4b4a4a;
+    font-weight: 100;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 0.7;
+    margin-bottom: 19px;
+}
+.l1{
+    color: #1C1C1C;
+    font-weight: 200;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 1;
+}
+.i1{
+    color: #4b4a4a;
+    font-weight: 100;
+    height: 25px;
+    width: 320px;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 0.7;
+    margin-bottom: 19px;
+}
+.l2{
+    color: #1C1C1C;
+    font-weight: 200;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 1;
+}
+.i2{
+    color: #4b4a4a;
+    font-weight: 100;
+    height: 25px;
+    width: 320px;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 0.7;
+    margin-bottom: 50px;
+}
+.button1{
+    padding: 7px;
+    width: 60px;
+    border: 0px;
+    border-radius: 20px;
+    color: white;
+    background-color: #6E6E6E;
+}
+.next{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    justify-content: space-around;
+}
+.ra1{
+    display: flex;
+}
+.ras{
+    width: 50px;
+    height: 3px;
+    margin: 10px 5px;
+    border-radius: 3px;
+    background-color: #1C1C1C;
+}
+.ras1{
+    width: 50px;
+    height: 3px;
+    margin: 10px 5px;
+    border-radius: 3px;
+    background-color: #595858;
+}
+
+.el{
+    color: #ffffff;
+    font-weight: 200;
+    font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+.co{
+    color: #ffffff;
+    font-weight: 200;
+    font-size: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 22px;
+    align-self: flex-start;
+}
+.s1{
+    color: #ffffff;
+    font-weight: 100;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 1;
+    margin-bottom: 14px;
+}
+.s2{
+    color: #787676;
+    font-weight: 100;
+    font-size: 11px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 4px;
+    opacity: 1;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+.imga{
+    width: 40vw;
+    z-index: 1;
+}
+.imga1{
+    width: 35vw;
+    z-index: 0;
+    top: 62%;
+    left: 25%;
+    position:absolute
+}
