@@ -1,0 +1,317 @@
+1.By yashmmith, contest: Introduction to C++, problem: (A) Hello World, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+	cout<<"Hello World";
+ 
+}
+→Judgement Protocol
+
+
+
+2.By yashmmith, contest: Introduction to C++, problem: (B) Print First 5 Alphabets, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+	cout<<"A"<<endl;
+	cout<<"B"<<endl;
+	cout<<"C"<<endl;
+	cout<<"D"<<endl;
+	cout<<"E"<<endl;
+}
+→Judgement Protocol
+
+
+3.By yashmmith, contest: Introduction to C++, problem: (C) Triangle, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n=5;
+    while(n>=0){
+        for(int i=0;i<n;i++){
+            cout<<"*";
+        }
+        cout<<endl;
+        n--;
+    }
+ 
+}
+→Judgement Protocol
+
+
+4.By yashmmith, contest: Introduction to C++, problem: (D) Print Z, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    cout<<"*****"<<endl;
+    cout<<"   *"<<endl;
+    cout<<"  *"<<endl;
+    cout<<" *"<<endl;
+    cout<<"*****"<<endl;
+}
+→Judgement Protocol
+
+
+
+5.By yashmmith, contest: Introduction to C++, problem: (E) Print Table of 5, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n=10;
+    for(int i=1;i<=n;i++){
+        cout<<"5 * "<<i<<" = "<<(5*i)<<endl;
+    }
+}
+→Judgement Protocol
+
+
+
+
+6.By yashmmith, contest: Introduction to C++, problem: (F) Rectangle, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int a,b;
+    cin>>a>>b;
+    int area=a*b;
+    int peri=2*(a+b);
+    cout<<"Area = "<<area<<endl;
+    cout<<"Perimeter = "<<peri;
+}
+→Judgement Protocol
+
+
+
+7.By yashmmith, contest: Introduction to C++, problem: (G) Print Table of N, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin>>k;
+    int n=10;
+    for(int i=1;i<=n;i++){
+        cout<<k<<" * "<<i<<" = "<<(k*i)<<endl;
+    }
+}
+→Judgement Protocol
+
+
+
+8.By yashmmith, contest: Introduction to C++, problem: (H1) Calculator, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k,j;
+    cin>>k>>j;
+    cout<<k<<" + "<<j<<" = "<<k+j<<endl;
+    cout<<k<<" - "<<j<<" = "<<k-j<<endl;
+    cout<<k<<" * "<<j<<" = "<<k*j<<endl;
+    cout<<k<<" / "<<j<<" = "<<k/j<<endl;
+    cout<<k<<" % "<<j<<" = "<<k%j<<endl;
+}
+
+
+
+
+9.By yashmmith, contest: Introduction to C++, problem: (H2) Calculator - II, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long k, j;
+    cin >> k >> j;
+ 
+    cout << k << " + " << j << " = " << k + j << "\n\n";
+    cout << k << " - " << j << " = " << k - j << "\n\n";
+    cout << k << " * " << j << " = " << k * j << "\n\n";
+    cout << k << " / " << j << " = " << k / j << "\n\n";
+    cout << k << " % " << j << " = " << k % j << "\n";
+ 
+    return 0;
+}
+
+
+10.By yashmmith, contest: Introduction to C++, problem: (I) Add Last Digits, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k,j;
+    cin>>k>>j;
+    while(k>10){
+        k=k%10;
+    }
+    while(j>10){
+        j=j%10;
+    }
+    cout<<j+k;
+}
+
+
+11.By yashmmith, contest: Introduction to C++, problem: (J) Even or Odd, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin>>k;
+    if(k%2==0){
+        cout<<"Even";
+    }
+    else{
+        cout<<"Odd";
+    }
+}
+
+
+
+
+12.By yashmmith, contest: Introduction to C++, problem: (K) Factor, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long k, j;
+    cin >> k >> j;
+ 
+    if (k % j == 0) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+ 
+    return 0;
+}
+
+
+
+13.By yashmmith, contest: Introduction to C++, problem: (L) Multiple, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long k, j;
+    cin >> k >> j;
+ 
+    if (j % k == 0) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+ 
+    return 0;
+}
+
+
+
+14.By yashmmith, contest: Introduction to C++, problem: (M) Pass or Fail, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin >> k;
+    if(k>=35){
+        cout<<"Pass";
+    }
+    else{
+        cout<<"Fail";
+    }
+    
+}
+
+
+15.By yashmmith, contest: Introduction to C++, problem: (N) Max and Min of 2 Numbers, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long k, j;
+    cin >> k >> j;
+ 
+    cout << "Min = " << min(k, j) << endl;
+    cout << "Max = " << max(k, j) << endl;
+ 
+    return 0;
+}
+
+
+
+
+16.By yashmmith, contest: Introduction to C++, problem: (O) Max and Min of 3 Numbers, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long a, b, c;
+    cin >> a >> b >> c;
+ 
+    cout << "Min = " << min({a, b, c}) << endl;
+    cout << "Max = " << max({a, b, c}) << endl;
+ 
+    return 0;
+}
+
+
+
+
+17.By yashmmith, contest: Introduction to C++, problem: (P) Student Performance Evaluation, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int marks;
+    cin >> marks;
+ 
+    if (marks > 90) {
+        cout << "Excellent";
+    } else if (marks > 80) {
+        cout << "Good";
+    } else if (marks > 70) {
+        cout << "Fair";
+    } else if (marks > 60) {
+        cout << "Meets Expectations";
+    } else {
+        cout << "Below Par";
+    }
+ 
+    return 0;
+}
+
+
+
+
+18.By yashmmith, contest: Introduction to C++, problem: (Q) Find the location point, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long x, y;
+    cin >> x >> y;
+ 
+    if (x == 0 && y == 0) {
+        cout << "Origin";
+    } else if (y == 0) {
+        cout << "X axis";
+    } else if (x == 0) {
+        cout << "Y axis";
+    } else if (x > 0 && y > 0) {
+        cout << "1st Quadrant";
+    } else if (x < 0 && y > 0) {
+        cout << "2nd Quadrant";
+    } else if (x < 0 && y < 0) {
+        cout << "3rd Quadrant";
+    } else {
+        cout << "4th Quadrant";
+    }
+ 
+    return 0;
+}
