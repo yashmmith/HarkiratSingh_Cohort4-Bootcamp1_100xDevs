@@ -1,0 +1,216 @@
+1.By yashmmith, contest: Loops, problem: (A) Print 1 to N, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin>>k;
+    for(int i=1;i<=k;i++){
+        cout<<i<<endl;
+    }
+}
+
+
+2.y yashmmith, contest: Loops, problem: (B) Print N to 1, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin>>k;
+    for(int i=k;i>0;i--){
+        cout<<i<<" ";
+    }
+}
+
+
+3.By yashmmith, contest: Loops, problem: (C) Print All Even Numbers from 1 to N, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k;
+    cin>>k;
+    for(int i=1;i<=k;i++){
+        if(i%2==0){
+        cout<<i<<" ";
+        }
+    }
+}
+
+
+4.By yashmmith, contest: Loops, problem: (D) Print from L to R, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int k,j;
+    cin>>k>>j;
+    for(int i=k;i<=j;i++){
+        cout<<i<<" ";
+    }
+}
+
+
+5.By yashmmith, contest: Loops, problem: (E) Print All Uppercase Alphabets, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    char ca='A';
+    for(int i=1;i<=26;i++){
+        cout<<ca<<" ";
+        ca++;
+    }
+}
+
+
+
+6.By yashmmith, contest: Loops, problem: (G) Count Numbers, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int noc;
+    cin>>noc;
+    int positive=0,negative=0,even=0,odd=0;
+    for (int i=0;i<noc;i++){
+        int no;
+        cin>>no;
+        if (no>0){
+            positive++;
+        }
+        else if(no<0){
+            negative++;
+        }
+        if (no%2==0){
+            even++;
+        }
+        else{
+            odd++;
+        }
+    }
+    cout<<positive<<endl;
+    cout<<negative<<endl;
+    cout<<even<<endl;
+    cout<<odd<<endl;
+}
+
+
+
+7.By yashmmith, contest: Loops, problem: (H) Sum of First N Natural Numbers, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long noc;
+    cin>>noc;
+    cout<<noc*((noc+1))/2;
+}
+
+
+
+8.By yashmmith, contest: Loops, problem: (I) Factorial, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    long long n;
+    cin >> n;
+    long long fact = 1;
+    for (long long i = 2; i <= n; i++) {
+        fact *= i;
+    }
+    cout << fact;
+    return 0;
+}
+
+
+
+9.By yashmmith, contest: Loops, problem: (J) $x^n$, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long n, m;
+    cin >> n >> m;
+ 
+    long long ans = 1;
+    while (m > 0) {
+        if (m & 1) ans *= n;
+        n *= n;
+        m >>= 1;
+    }
+ 
+    cout << ans;
+    return 0;
+}
+
+
+
+10.By yashmmith, contest: Loops, problem: (K) Print Number in Reverse, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    string n;
+    cin >> n;
+ 
+    reverse(n.begin(), n.end());
+    cout << n;
+ 
+    return 0;
+}
+
+
+11.By yashmmith, contest: Loops, problem: (M) Reverse Number and Store in a Variable, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long n;
+    cin >> n;
+    long long rev = 0;
+    while (n > 0) {
+        rev = rev * 10 + (n % 10);
+        n /= 10;
+    }
+    cout << rev;
+    return 0;
+}
+
+
+
+12.By yashmmith, contest: Loops, problem: (L) Sum Of Digits, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long n;
+    cin >> n;
+    long long sum=0;
+    while(n>0){
+    sum=sum+n%10;
+    n=n/10;
+    }
+    cout<<sum;
+}
+
+
+
+13.By yashmmith, contest: Loops, problem: (N) Palindrome, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    string n;
+    cin >> n;
+ 
+    string rev = n;
+    reverse(rev.begin(), rev.end());
+ 
+    if (n == rev)
+        cout << "YES";
+    else
+        cout << "NO";
+}
+
