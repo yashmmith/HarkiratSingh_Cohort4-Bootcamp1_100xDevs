@@ -1,0 +1,444 @@
+1.By yashmmith, contest: Pattern Printing, problem: (A) 2-Stars, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int k;
+    cin>>k;
+    for (int i=0;i<k;i++){
+        cout<<"**"<<endl;
+    }
+}
+
+
+2.By yashmmith, contest: Pattern Printing, problem: (B) M-Stars, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    for (int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+3.By yashmmith, contest: Pattern Printing, problem: (C) Square, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+4.By yashmmith, contest: Pattern Printing, problem: (D) Hollow Square, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if (i==0 || i==n-1 || j==0 || j==n-1){
+                cout<<"*";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+
+
+5.By yashmmith, contest: Pattern Printing, problem: (E) Hollow Rectangle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    for (int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if (i==0 || i==n-1 || j==0 || j==m-1){
+                cout<<"*";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+
+
+6.By yashmmith, contest: Pattern Printing, problem: (F) Pyramid, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    for (int i=1;i<=n;i++){
+        for(int j=0;j<i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+7.By yashmmith, contest: Pattern Printing, problem: (G) Inverse Pyramid, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    for (int i=n;i>=0;i--){
+        for(int j=0;j<i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+8.By yashmmith, contest: Pattern Printing, problem: (H) Numbered Traingle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=1;i<=n;i++){
+        for(int j=0;j<i;j++){
+            cout<<i;
+        }
+        cout<<endl;
+    }
+}
+
+
+
+9.By yashmmith, contest: Pattern Printing, problem: (I) Binary Pyramid, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=1;i<=n;i++){
+        int f = (i % 2 == 0);
+        for(int j=0;j<i;j++){
+            cout<<f;
+            f=1-f;
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+10.By yashmmith, contest: Pattern Printing, problem: (J) Vertical Traingle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=1;i<=n;i++){
+        for(int j=0;j<i;j++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+    for (int i=1;i<n;i++){
+        for(int j=n-i;j>=1;j--){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+11.By yashmmith, contest: Pattern Printing, problem: (K) Hollow Vertical Triangle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for (int i=1;i<=n;i++){
+        for(int j=1;j<=i;j++){
+            if(i==1 || j==1 || j==i){
+            cout<<"* ";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+    for (int i=1;i<n;i++){
+        for(int j=1;j<=n-i;j++){
+            if(i==n-1 || j==1 || j==n-i){
+            cout<<"* ";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+
+
+12.y yashmmith, contest: Pattern Printing, problem: (L) Triangle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=0;j<n-i;j++){
+            cout<<" ";
+        }
+        for (int k = 1; k < i; k++) {
+            cout << "* ";
+        }
+        cout << "*";
+        cout<<endl;
+    }
+}
+
+
+
+13.By yashmmith, contest: Pattern Printing, problem: (M) Hollow Triangle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    int n;
+    cin >> n;
+ 
+    for(int i = 1; i <= n; i++){
+        // leading spaces
+        for(int j = 0; j < n - i; j++){
+            cout << " ";
+        }
+ 
+        if(i == 1){
+            cout << "*"; // top row
+        } else if(i == n){
+            // bottom row: all stars with spaces
+            for(int k = 1; k <= n; k++){
+                cout << "*";
+                if(k < n) cout << " ";
+            }
+        } else {
+            // middle rows: star + spaces + star
+            cout << "*";
+            for(int k = 1; k <= 2*(i-1)-1; k++){
+                cout << " ";
+            }
+            cout << "*";
+        }
+ 
+        cout << endl;
+    }
+}
+
+
+
+
+14.By yashmmith, contest: Pattern Printing, problem: (N) Inverted Hollow Triangle, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=0;j<i-1;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<=n-i;k++){
+            if(i==1 || k==0 || k==n-i){
+            cout<<"* ";
+            }
+            else{
+                cout<<"  ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+
+
+15.By yashmmith, contest: Pattern Printing, problem: (O) Diamond, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=0;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<i;k++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+    for(int i=1;i<=n-1;i++){
+        for(int j=0;j<=i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<n-i;k++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+16.By yashmmith, contest: Pattern Printing, problem: (P) Hollow Diamond, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=0;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<i;k++){
+            if(i==1 || k==0 || k==i-1){
+            cout<<"* ";}
+            else{
+                cout<<"  ";
+            }
+        }
+        cout<<endl;
+    }
+    for(int i=1;i<=n-1;i++){
+        for(int j=0;j<=i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<n-i;k++){
+            if(i==n-1 || k==0 || k==n-i-1){
+            cout<<"* ";}
+            else{
+                cout<<"  ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+
+
+17.By yashmmith, contest: Pattern Printing, problem: (Q) Crown, Accepted, #, Copy
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=i;j++){
+            cout<<"*";
+        }
+        for(int j=1;j<=(2*(n-i));j++){
+            cout<<" ";
+        }
+        for(int j=1;j<=i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+18.By yashmmith, contest: Pattern Printing, problem: (R) Butterfly, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+ 
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= i; j++) cout << "*";
+        for(int j = 1; j <= 2*(n-i); j++) cout << " ";
+        for(int j = 1; j <= i; j++) cout << "*";
+        cout << endl;
+    }
+ 
+    for(int i = n-1; i >= 1; i--) {
+        for(int j = 1; j <= i; j++) cout << "*";
+        for(int j = 1; j <= 2*(n-i); j++) cout << " ";
+        for(int j = 1; j <= i; j++) cout << "*";
+        cout << endl;
+    }
+ 
+    return 0;
+}
+
+
+
+19.By yashmmith, contest: Pattern Printing, problem: (S) Inverted Diamond, Accepted, #, Copy
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+ 
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n - i + 1; j++)
+            cout << "*";
+ 
+        if(i == 1) {
+            cout << " ";
+        } else {
+            for(int j = 1; j <= 2*(i-1) - 1; j++)
+                cout << " ";
+        }
+        for(int j = 1; j <= n - i + 1; j++)
+            cout << "*";
+ 
+        cout << endl;
+    }
+    for(int i = n - 1; i >= 1; i--) {
+        for(int j = 1; j <= n - i + 1; j++)
+            cout << "*";
+ 
+        if(i == 1) {
+            cout << " "; 
+        } else {
+            for(int j = 1; j <= 2*(i-1) - 1; j++)
+                cout << " ";
+        }
+ 
+        for(int j = 1; j <= n - i + 1; j++)
+            cout << "*";
+ 
+        cout << endl;
+    }
+ 
+    return 0;
+
+}Hello bois

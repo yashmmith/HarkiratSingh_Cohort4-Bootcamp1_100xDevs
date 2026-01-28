@@ -1,0 +1,11 @@
+https://www.canva.com/design/DAG-YfsCSVY/eI46CeFBrFctMzdmkza-_g/edit
+
+
+How computers think?
+Why do programming languages exist?
+Writing first cpp code
+Rules of printing 
+Datatypes and operations
+Taking input/op
+If-else
+Assignment
