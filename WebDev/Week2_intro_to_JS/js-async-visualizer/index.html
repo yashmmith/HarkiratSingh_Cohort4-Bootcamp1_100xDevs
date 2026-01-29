@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Async Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-dark">
+  <header class="top-bar">
+    <div class="logo">JS Async Visualizer</div>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="theory">Theory</button>
+      <button class="tab-btn" data-tab="visualizer">Visualizer</button>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">◐</button>
+  </header>
+
+  <main>
+    <section id="tab-home" class="tab-panel active home-panel">
+      <div class="hero">
+        <h1>Understand JavaScript Async, Visually.</h1>
+        <p>
+          Learn synchronous vs asynchronous code, callbacks, promises, async/await, and the
+          event loop using one consistent example.
+        </p>
+        <p>
+          Start with clear theory, then see the same code flow through the call stack, Web API
+          and callback queue in the visualizer.
+        </p>
+        <button class="primary" data-tab-jump="theory">Dive into the theory</button>
+      </div>
+    </section>
+
+    <section id="tab-theory" class="tab-panel">
+      <div class="theory-layout">
+        <aside class="theory-nav">
+          <button class="theory-link active" data-section="sync-vs-async">Sync code</button>
+          <button class="theory-link" data-section="io-vs-cpu">I/O vs CPU bound</button>
+          <button class="theory-link" data-section="callbacks">Async & Callbacks</button>
+          <button class="theory-link" data-section="promises">Promises</button>
+          <button class="theory-link" data-section="async-await">Async/Await</button>
+          <button class="theory-link" data-section="event-loop">JS Architecture</button>
+        </aside>
+        <article class="theory-content">
+          <section data-section-id="sync-vs-async" class="theory-section active">
+            <h2>Synchronous code</h2>
+            <p>
+              Synchronous code is executed line by line, in the order it's written. Each operation waits for the
+              previous one to complete before moving on to the next one.
+            </p>
+            <p>
+              You can think of it like a single-lane road with a strict queue: a car in front must move before the
+              next one can progress. This model is simple to reason about, but it can become a bottleneck when any
+              one step takes a long time.
+            </p>
+            <p>For example:</p>
+            <pre><code class="language-js">function sum(n) {
+  let ans = 0;
+  for (let i = 1; i &lt;= n; i++) {
+    ans = ans + i;
+  }
+  return ans;
+}
+
+const ans1 = sum(100);
+console.log(ans1);
+const ans2 = sum(1000);
+console.log(ans2);
+const ans3 = sum(10000);
+console.log(ans3);</code></pre>
+            <p>
+              Here, each call to <code>sum</code> must finish completely before the next line runs. If
+              <code>sum(1000000000)</code> was very slow, the entire program would pause while it finished.
+            </p>
+            <p>
+              To keep programs responsive when doing slow work (like reading files or making network requests),
+              JavaScript relies heavily on <strong>asynchronous</strong> APIs, which you'll see in the next sections.
+              A big part of mastering JavaScript is knowing when synchronous code is fine (for small, quick tasks)
+              and when it is better to offload work to asynchronous primitives.
+            </p>
+          </section>
+
+          <section data-section-id="io-vs-cpu" class="theory-section">
+            <h2>I/O heavy operations & I/O-bound vs CPU-bound tasks</h2>
+            <h3>I/O heavy operations</h3>
+            <p>
+              I/O (Input/Output) heavy operations involve a lot of data transfer between your program and external
+              systems or devices. These operations usually require waiting for data to be read from or written to
+              disks, networks, databases, or other external devices, which is much slower than in-memory computation.
+            </p>
+            <p>Examples of I/O heavy operations:</p>
+            <ul>
+              <li>Reading or writing files</li>
+              <li>Starting a clock / timers</li>
+              <li>HTTP requests (network calls)</li>
+            </ul>
+            <p>Reading a file synchronously (Node.js):</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+const contents = fs.readFileSync("a.txt", "utf-8");
+console.log(contents);</code></pre>
+            <p>Reading multiple files synchronously, one after another:</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+const contents = fs.readFileSync("a.txt", "utf-8");
+console.log(contents);
+
+const contents2 = fs.readFileSync("b.txt", "utf-8");
+console.log(contents2);</code></pre>
+
+            <h3>I/O-bound tasks vs CPU-bound tasks</h3>
+            <h4>CPU-bound tasks</h4>
+            <p>
+              CPU-bound tasks are limited by the speed and power of the CPU. These tasks require significant
+              computation and processing power &mdash; the performance bottleneck is the CPU itself.
+            </p>
+            <pre><code class="language-js">let ans = 0;
+for (let i = 1; i &lt;= 1000000; i++) {
+  ans = ans + i;
+}
+console.log(ans);</code></pre>
+            <p>
+              A real-world example of a CPU intensive task is running for 3 miles. Your body and brain must be
+              continuously engaged while you run.
+            </p>
+
+            <h4>I/O-bound tasks</h4>
+            <p>
+              I/O-bound tasks are limited by input/output capabilities such as disk I/O, network I/O, or other forms
+              of data transfer. They spend most of their time <em>waiting</em> for I/O to complete.
+            </p>
+            <pre><code class="language-js">const fs = require("fs");
+
+const contents = fs.readFileSync("a.txt", "utf-8");
+console.log(contents);</code></pre>
+            <p>
+              A real-world example of an I/O-bound task is boiling water. You don't need to constantly focus on it;
+              you start it and then mostly wait for it to finish.
+            </p>
+
+            <h3>Doing multiple I/O-bound tasks in the real world</h3>
+            <p>Imagine you need to:</p>
+            <ul>
+              <li>Boil some water</li>
+              <li>Do some laundry</li>
+              <li>Send a package via mail</li>
+            </ul>
+            <p>You could:</p>
+            <ul>
+              <li>Do them one by one (synchronously)</li>
+              <li>Context switch between them (concurrently)</li>
+              <li>
+                Start all 3 tasks, and whenever one finishes, handle it first (typical of asynchronous I/O in code)
+              </li>
+            </ul>
+
+            <h4>Synchronously (one by one)</h4>
+            <pre><code class="language-js">const fs = require("fs");
+
+const contents = fs.readFileSync("a.txt", "utf-8");
+console.log(contents);
+
+const contents2 = fs.readFileSync("b.txt", "utf-8");
+console.log(contents2);
+
+const contents3 = fs.readFileSync("c.txt", "utf-8");
+console.log(contents3);</code></pre>
+
+            <h4>Start all 3 together (asynchronously)</h4>
+            <pre><code class="language-js">const fs = require("fs");
+
+fs.readFile("a.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});
+
+fs.readFile("b.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});
+
+fs.readFile("c.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});</code></pre>
+            <p>
+              For a deeper dive into these ideas, a classic resource is <em>"Concurrency is not parallelism"</em>
+              (YouTube).
+            </p>
+          </section>
+
+          <section data-section-id="callbacks" class="theory-section">
+            <h2>Asynchronous code & callbacks</h2>
+            <p>
+              Asynchronous code lets you kick off a task and move on without waiting for it to finish. When the task
+              completes, a <strong>callback</strong> function gets invoked.
+            </p>
+            <p>
+              This is powerful because it lets a single JavaScript thread orchestrate many slow operations without
+              blocking. The tradeoff is that control flow jumps between callbacks, which can make code harder to read
+              if it is not structured carefully.
+            </p>
+            <p>
+              Reading from a file asynchronously with a callback (Node.js): the function gets "called back" once the
+              file is read.
+            </p>
+            <pre><code class="language-js">const fs = require("fs");
+
+fs.readFile("a.txt", "utf-8", function (err, contents) {
+  console.log(contents);
+});</code></pre>
+
+            <h3><code>setTimeout</code></h3>
+            <p>
+              <code>setTimeout</code> is another asynchronous function. It schedules a function to run after a certain
+              delay.
+            </p>
+            <pre><code class="language-js">function run() {
+  console.log("I will run after 1s");
+}
+
+setTimeout(run, 1000);
+console.log("I will run immediately");</code></pre>
+            <p>
+              Even though <code>setTimeout</code> is called before the second <code>console.log</code>, its callback runs
+              later, after the specified delay.
+            </p>
+          </section>
+
+          <section data-section-id="promises" class="theory-section">
+            <h2>Promise class & promisified APIs</h2>
+            <p>
+              A <strong>Promise</strong> represents the eventual completion (or failure) of an asynchronous operation
+              and its resulting value. It helps structure async code more clearly than deeply nested callbacks.
+            </p>
+            <p>
+              Conceptually, a Promise is like a placeholder for a value that you will get in the future. While that
+              value is being produced, your code can attach handlers with <code>.then</code> / <code>.catch</code> that
+              describe what should happen when the result finally arrives.
+            </p>
+            <p>
+              Calling a promise is easy; defining your own Promise-returning function is the tricky part, because you
+              need to decide when to call <code>resolve</code> and <code>reject</code>, and ensure you never call them
+              more than once.
+            </p>
+
+            <h3>Using a function that returns a Promise</h3>
+            <p>Ignore the function definition of <code>setTimeoutPromisified</code> for a moment:</p>
+            <pre><code class="language-js">function setTimeoutPromisified(ms) {
+  return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+function callback() {
+  console.log("3 seconds have passed");
+}
+
+setTimeoutPromisified(3000).then(callback);</code></pre>
+
+            <h3>Callback hell</h3>
+            <p>Goal: write code that</p>
+            <ul>
+              <li>logs <code>"hi"</code> after 1 second</li>
+              <li>logs <code>"hello"</code> 3 seconds after step 1</li>
+              <li>logs <code>"hello there"</code> 5 seconds after step 2</li>
+            </ul>
+            <p>Solution using nested callbacks (callback hell):</p>
+            <pre><code class="language-js">setTimeout(function () {
+  console.log("hi");
+  setTimeout(function () {
+    console.log("hello");
+
+    setTimeout(function () {
+      console.log("hello there");
+    }, 5000);
+  }, 3000);
+}, 1000);</code></pre>
+
+            <h3>Cleaner callback-based solution</h3>
+            <pre><code class="language-js">function step3Done() {
+  console.log("hello there");
+}
+
+function step2Done() {
+  console.log("hello");
+  setTimeout(step3Done, 5000);
+}
+
+function step1Done() {
+  console.log("hi");
+  setTimeout(step2Done, 3000);
+}
+
+setTimeout(step1Done, 1000);</code></pre>
+
+            <h3>Promisified version</h3>
+            <p>Using the promisified timeout:</p>
+            <pre><code class="language-js">function setTimeoutPromisified(ms) {
+  return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+// Still nested (Promise-based callback hell)
+setTimeoutPromisified(1000).then(function () {
+  console.log("hi");
+  setTimeoutPromisified(3000).then(function () {
+    console.log("hello");
+    setTimeoutPromisified(5000).then(function () {
+      console.log("hello there");
+    });
+  });
+});</code></pre>
+
+            <h3>Better Promise chaining</h3>
+            <pre><code class="language-js">setTimeoutPromisified(1000)
+  .then(function () {
+    console.log("hi");
+    return setTimeoutPromisified(3000);
+  })
+  .then(function () {
+    console.log("hello");
+    return setTimeoutPromisified(5000);
+  })
+  .then(function () {
+    console.log("hello there");
+  });</code></pre>
+
+            <h3>Err-first callbacks vs Promise rejects</h3>
+            <p>Traditional Node-style callbacks use an <code>err</code>-first convention:</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+function afterDone(err, data) {
+  if (err) {
+    console.log("Error while reading file");
+  } else {
+    console.log(data);
+  }
+}
+
+fs.readFile("a.txt", "utf-8", afterDone);</code></pre>
+            <p>Promisified version uses <code>reject</code> to propagate errors:</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+function readFilePromisified(filePath) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(filePath, "utf-8", function (err, data) {
+      if (err) {
+        reject("Error while reading file");
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+function onDone(data) {
+  console.log(data);
+}
+
+function onError(err) {
+  console.log("Error: " + err);
+}
+
+readFilePromisified("a.txt").then(onDone).catch(onError);</code></pre>
+          </section>
+
+          <section data-section-id="async-await" class="theory-section">
+            <h2>Async/Await syntax</h2>
+            <p>
+              The <code>async</code> and <code>await</code> syntax lets you write asynchronous code that looks and
+              behaves like synchronous code. It is essentially syntactic sugar on top of Promises.
+            </p>
+            <p>
+              Instead of chaining <code>.then</code> and <code>.catch</code>, you can use <code>await</code> to pause
+              inside an <code>async</code> function until a Promise resolves.
+            </p>
+            <p>
+              Under the hood, nothing "magical" happens: the JavaScript engine rewrites your <code>async</code>
+              function into a Promise-based state machine. The benefit is entirely about readability, error handling
+              with <code>try/catch</code>, and making complex flows feel more like straightforward, synchronous code.
+            </p>
+
+            <h3>Assignment</h3>
+            <p>Write code that:</p>
+            <ul>
+              <li>logs <code>"hi"</code> after 1 second</li>
+              <li>logs <code>"hello"</code> 3 seconds after step 1</li>
+              <li>logs <code>"hello there"</code> 5 seconds after step 2</li>
+            </ul>
+            <pre><code class="language-js">function setTimeoutPromisified(ms) {
+  return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+async function solve() {
+  await setTimeoutPromisified(1000);
+  console.log("hi");
+  await setTimeoutPromisified(3000);
+  console.log("hello");
+  await setTimeoutPromisified(5000);
+  console.log("hello there");
+}
+
+solve();</code></pre>
+            <p>Things to keep in mind:</p>
+            <ul>
+              <li>You can only use <code>await</code> inside an <code>async</code> function.</li>
+              <li>You can't have a top-level <code>await</code> in plain Node.js (without special flags).</li>
+            </ul>
+
+            <h3>Defining your own async function (file cleaner)</h3>
+            <p>Goal: write a function that:</p>
+            <ul>
+              <li>Reads the contents of a file</li>
+              <li>Trims extra space from left and right</li>
+              <li>Writes it back to the file</li>
+            </ul>
+
+            <h4>1. Callback approach</h4>
+            <p>Function signature:</p>
+            <pre><code class="language-js">function onDone() {
+  console.log("file has been cleaned");
+}
+
+cleanFile("a.txt", onDone);</code></pre>
+            <p>Implementation:</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+function cleanFile(filePath, cb) {
+  fs.readFile(filePath, "utf-8", function (err, data) {
+    data = data.trim();
+    fs.writeFile(filePath, data, function () {
+      cb();
+    });
+  });
+}
+
+function onDone() {
+  console.log("file has been cleaned");
+}
+
+cleanFile("a.txt", onDone);</code></pre>
+
+            <h4>2. Promisified approach</h4>
+            <p>Desired usage:</p>
+            <pre><code class="language-js">async function main() {
+  await cleanFile("a.txt");
+  console.log("Done cleaning file");
+}
+
+main();</code></pre>
+            <p>Implementation:</p>
+            <pre><code class="language-js">const fs = require("fs");
+
+function cleanFile(filePath) {
+  return new Promise(function (resolve) {
+    fs.readFile(filePath, "utf-8", function (err, data) {
+      data = data.trim();
+      fs.writeFile(filePath, data, function () {
+        resolve();
+      });
+    });
+  });
+}
+
+async function main() {
+  await cleanFile("a.txt");
+  console.log("Done cleaning file");
+}
+
+main();</code></pre>
+          </section>
+
+          <section data-section-id="event-loop" class="theory-section">
+            <h2>JS architecture for async code</h2>
+            <p>
+              JavaScript uses a set of cooperating components to execute asynchronous code: the call stack, Web APIs,
+              the callback queue, and the event loop. Together, they allow a single thread to juggle many ongoing
+              tasks without blocking.
+            </p>
+
+            <h3>1. Call Stack</h3>
+            <p>
+              The call stack is a data structure that tracks which function is currently running. It is
+              <strong>LIFO</strong> (Last In, First Out): the last function pushed is the first to finish.
+            </p>
+            <p>When a function is called, it is pushed onto the stack; when it returns, it is popped off.</p>
+            <pre><code class="language-js">function first() {
+  console.log("First");
+}
+
+function second() {
+  first();
+  console.log("Second");
+}
+
+second();</code></pre>
+
+            <h3>2. Web APIs</h3>
+            <p>
+              Web APIs are provided by the browser (or by Node.js) and let you perform tasks outside of pure JS,
+              such as timers, HTTP requests, or filesystem operations. These APIs handle the work asynchronously.
+            </p>
+
+            <h3>3. Callback Queue</h3>
+            <p>
+              The callback queue is a list of tasks (callbacks) waiting to run once the call stack is empty. After a
+              Web API finishes (for example, a timer fires or a file is read), it places the corresponding callback
+              into this queue.
+            </p>
+
+            <h3>4. Event Loop</h3>
+            <p>
+              The event loop continuously checks the call stack and the callback queue. If the stack is empty and
+              there are callbacks in the queue, it pushes the next callback onto the stack to be executed.
+            </p>
+            <p>
+              Our visualizer shows a simplified version of this world using three panels: Call Stack, Web API, and
+              Callback Queue, plus a Console area to display logs.
+            </p>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <section id="tab-visualizer" class="tab-panel">
+      <div class="visualizer-layout">
+        <section class="viz-left">
+          <header class="viz-header">
+            <h2>Execution Visualizer</h2>
+            <div class="viz-controls">
+              <label>Speed
+                <input id="speedRange" type="range" min="0.25" max="4" step="0.25" value="1" />
+              </label>
+              <button id="runBtn" class="primary">Run</button>
+              <button id="stepBtn" class="secondary">Step</button>
+              <button id="resetBtn" class="secondary">Reset</button>
+            </div>
+          </header>
+
+          <div class="code-area">
+            <textarea id="codeInput" spellcheck="false">
+console.log('Start');
+
+setTimeout(() =&gt; {
+  console.log('Timeout callback');
+}, 0);
+
+Promise.resolve().then(() =&gt; {
+  console.log('Promise microtask');
+});
+
+console.log('End');
+            </textarea>
+          </div>
+        </section>
+
+        <section class="viz-right">
+          <div class="viz-row">
+            <div class="viz-column" id="callStack">
+              <h3>Call Stack</h3>
+              <ul class="viz-list"></ul>
+            </div>
+            <div class="viz-column" id="webApis">
+              <h3>Web API</h3>
+              <ul class="viz-list"></ul>
+            </div>
+            <div class="viz-column" id="callbackQueue">
+              <h3>Callback Queue</h3>
+              <ul class="viz-list"></ul>
+            </div>
+          </div>
+          <div class="console-panel" id="consolePanel">
+            <h3>Console</h3>
+            <ul class="viz-list console-list"></ul>
+          </div>
+          <div class="event-loop-indicator">
+            <span class="dot"></span>
+            <span>Event Loop</span>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
