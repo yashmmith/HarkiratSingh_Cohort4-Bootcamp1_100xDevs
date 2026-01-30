@@ -1,0 +1,208 @@
+By yashmmith, contest: Functions, problem: (A) Hello Functions, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+void pf(int no){
+    for (int i=0;i<no;i++){
+        cout<<"I am learning functions"<<endl;
+    }
+} 
+signed main(){
+    int no;
+    cin>>no;
+    pf(no);
+}
+
+
+
+By yashmmith, contest: Functions, problem: (B) Print Factors - I, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+void pf(int no){
+    for (int i=1;i<=no;i++){
+        if(no%i==0){
+            cout<<i<<" ";
+        }
+    }
+}
+signed main(){
+    int no;
+    cin>>no;
+    pf(no);
+}
+
+
+
+
+
+By yashmmith, contest: Functions, problem: (C) Print Factors - II, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+void pf(int no){
+    for (int i=no;i>=1;i--){
+        if(no%i==0){
+            cout<<i<<" ";
+        }
+    }
+}
+signed main(){
+    int no;
+    cin>>no;
+    pf(no);
+}
+
+
+
+
+By yashmmith, contest: Functions, problem: (D) Check Prime, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+bool pf(int no){
+    int count=0;
+    for (int i=1;i<=no;i++){
+        if(no%i==0){
+            count++;
+        }
+    }
+    if(count==2){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+ 
+signed main(){
+    int no;
+    cin>>no;
+    int k=pf(no);
+    if(k==1){
+        cout<<"Prime";
+    }
+    else{
+        cout<<"Not Prime";
+    }
+}
+
+
+
+
+By yashmmith, contest: Functions, problem: (E) Factorial, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+void pf(int no){
+    int count=1;
+    for (int i=1;i<=no;i++){
+        count*=i;
+    }
+    cout<<count;
+}
+signed main(){
+    int no;
+    cin>>no;
+    pf(no);
+}
+
+
+
+By yashmmith, contest: Functions, problem: (F) nCr, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+signed main(){
+    int n, r;
+    cin >> n >> r;
+ 
+    if (r > n) {
+        cout << 0;
+        return 0;
+    }
+ 
+    r = min(r, n - r); // optimization
+    int res = 1;
+ 
+    for (int i = 1; i <= r; i++) {
+        res = res * (n - r + i) / i;
+    }
+ 
+    cout << res;
+}
+
+
+
+
+By yashmmith, contest: Functions, problem: (G) Print Primes from 1 to N, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+#define int long long
+ 
+void pf(int no){
+    int count=0;
+    for (int i=1;i<=no;i++){
+        if(no%i==0){
+            count++;
+        }
+    }
+    if(count==2){
+        cout<<no<<" ";
+    }
+}
+ 
+signed main(){
+    int no;
+    cin>>no;
+    for(int i=2;i<=no;i++){
+        pf(i);
+    }
+}
+
+
+
+
+By yashmmith, contest: Functions, problem: (H) Count Zeros, Accepted, #, Copy
+ #include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long n;
+    cin >> n;
+    int count = 0;
+    if (n == 0) { 
+        cout << 1;
+        return 0;
+    }
+    while (n > 0) {
+        if (n % 10 == 0)
+            count++;
+        n /= 10;
+    }
+    cout << count;
+}
+
+
+By yashmmith, contest: Functions, problem: (I) Find HCF, Accepted, #, Copy
+ #include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    long long a, b;
+    cin >> a >> b;
+ 
+    while (b != 0) {
+        long long rem = a % b;
+        a = b;
+        b = rem;
+    }
+ 
+    cout << a;
+}
