@@ -1,0 +1,876 @@
+## 1. Pre-Increment and Post-Increment
+
+### What is Increment?
+
+Increment means **increase the value of a variable by 1**.
+
+```cpp
+x = x + 1;
+```
+
+C++ provides shortcuts:
+
+- `++x` → **Pre-increment**
+- `x++` → **Post-increment**
+
+### Pre-Increment (`++x`)
+
+**Definition**
+
+- First **increase the value**
+- Then **use the value**
+
+**Example**
+
+```cpp
+int x = 5;
+int y = ++x;
+
+cout << x << endl;
+cout << y << endl;
+```
+
+**Step-by-step**
+
+1. `x` becomes 6
+2. `y` gets 6
+
+**Output**
+
+```
+6
+6
+```
+
+### Post-Increment (`x++`)
+
+**Definition**
+
+- First **use the value**
+- Then **increase the value**
+
+**Example**
+
+```cpp
+int x = 5;
+int y = x++;
+
+cout << x << endl;
+cout << y << endl;
+```
+
+**Step-by-step**
+
+1. `y` gets 5
+2. `x` becomes 6
+
+**Output**
+
+```
+6
+5
+```
+
+### Side-by-Side Comparison
+
+| **Expression** | **Meaning** |
+| --- | --- |
+| `++x` | Increment first, then use |
+| `x++` | Use first, then increment |
+
+### Tricky Example
+
+```cpp
+int x = 10;
+cout << x++ << endl;
+cout << ++x << endl;
+```
+
+**Dry Run**
+
+- First line prints `10`, `x` becomes `11`
+- Second line increments to `12`, prints `12`
+
+**Output**
+
+```
+10
+12
+```
+
+<aside>
+⚠️
+
+**Important Rule**
+
+Avoid using `++` multiple times in one statement.
+
+```cpp
+int x = 5;
+int y = x++ + ++x;   // Confusing
+```
+
+</aside>
+
+---
+
+## 2. Ternary Operator (`?:`)
+
+### What is Ternary Operator?
+
+A **short form of if–else** that works in a single line.
+
+**Syntax**
+
+```cpp
+condition ? value_if_true : value_if_false;
+```
+
+### Example Using if–else
+
+```cpp
+int a = 10;
+int b = 20;
+
+int max;
+if (a > b)
+{
+    max = a;
+}
+else
+{
+    max = b;
+}
+```
+
+### Same Example Using Ternary Operator
+
+```cpp
+int max = (a > b) ? a : b;
+```
+
+**Shorter, cleaner, same logic.**
+
+### Another Example: Even or Odd
+
+```cpp
+int n = 7;
+
+cout << ((n % 2 == 0) ? "Even" : "Odd") << endl;
+```
+
+**Output**
+
+```
+Odd
+```
+
+### When to Use Ternary Operator
+
+- Simple conditions
+- Single decision
+- Avoid nested ternary operators
+
+---
+
+## 3. `int` vs `long long`
+
+### Why Do We Need Different Data Types?
+
+Because **numbers have limits**.
+
+### `int`
+
+- **Size:** 4 bytes
+- **Range:** `-2,147,483,648` to  `2,147,483,647` (≈ 2 × 10⁹)
+
+```cpp
+int x = 1000000000;
+```
+
+### `long long`
+
+- **Size:** 8 bytes
+- **Range:** up to ≈ 9 × 10¹⁸
+
+```cpp
+long long x = 1000000000000;
+```
+
+### What Happens if int Overflows?
+
+```cpp
+int x = 2000000000; // 2 * 10^9
+x = x + 1000000000;
+
+cout << x << endl;
+```
+
+Output becomes **wrong** due to overflow.
+
+### Use `long long` When:
+
+- Multiplying large numbers
+- Constraints mention `10^9`, `10^12`, `10^18`
+- Competitive programming problems
+
+---
+
+## `#define int long long` Hack
+
+### What Is This?
+
+A **preprocessor trick** used in competitive programming.
+
+```cpp
+#define int long long
+```
+
+After this line:
+
+- Every `int` becomes `long long`
+
+### Example
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long
+
+int main()
+{
+    int x = 1000000000000;
+    cout << x << endl;
+}
+```
+
+<aside>
+❗
+
+**Important Rule (Very Important)**
+
+If you use the hack, write `main` like this:
+
+```cpp
+signed main()
+{
+}
+```
+
+**Why?**
+
+- `int main()` becomes `long long main()` (invalid)
+- `signed` avoids replacement
+</aside>
+
+### Should Beginners Use This Hack?
+
+- **Bad** Practice, but good for **competitive programming**
+- **Bad** for **learning fundamentals**
+- Can hide overflow bugs
+
+**Recommendation:**
+
+- **Understand `int` and `long long` first**
+- Use hack later
+
+---
+
+## 4. Short-Circuit Evaluation (Logical Operators)
+
+### What is Short-Circuiting?
+
+In C++, **logical operators**:
+
+- `&&` (AND)
+- `||` (OR)
+
+do **not always evaluate both sides** of an expression. The second condition is evaluated **only if needed**.
+
+This behavior is called **short-circuit evaluation**.
+
+### Short-Circuit with and (`&&`)
+
+**Rule**
+
+- If the **first condition is false**
+- The second condition is **not evaluated**
+
+**Example**
+
+```cpp
+int a = 5;
+int b = 0;
+
+if (a > 10 and (b = 10) > 5)
+{
+    cout << "Inside if" << endl;
+}
+
+cout << b << endl;
+```
+
+**Dry Run**
+
+- `a > 10` → false
+- Second condition is skipped
+- `b` is never updated
+
+**Output**
+
+```
+0
+```
+
+### Short-Circuit with or (`||`)
+
+**Rule**
+
+- If the **first condition is true**
+- The second condition is **not evaluated**
+
+**Example**
+
+```cpp
+int a = 5;
+int b = 0;
+
+if (a < 10 or (b = 10) > 5)
+{
+    cout << "Inside if" << endl;
+}
+
+cout << b << endl;
+```
+
+**Dry Run**
+
+- `a < 10` → true
+- Second condition skipped
+
+**Output**
+
+```
+Inside if
+0
+```
+
+### Why Short-Circuiting Exists
+
+1. Improves performance
+2. Prevents runtime errors
+3. Enables safe condition checks
+
+### Very Important Practical Example (Division by Zero)
+
+**Without Short-Circuit (Dangerous)**
+
+```cpp
+int a = 10;
+int b = 0;
+
+if (a / b > 1)
+{
+    cout << "Valid" << endl;
+}
+```
+
+This causes **runtime error**.
+
+**With Short-Circuit (Safe)**
+
+```cpp
+int a = 10;
+int b = 0;
+
+if (b != 0 && a / b > 1)
+{
+    cout << "Valid" << endl;
+}
+```
+
+**Explanation**
+
+- `b != 0` is false
+- `a / b` is never executed
+- Program is safe
+
+### Short-Circuit with Functions
+
+```cpp
+bool check()
+{
+    cout << "Function called" << endl;
+    return true;
+}
+
+int main()
+{
+    if (false && check())
+    {
+        cout << "Inside if" << endl;
+    }
+}
+```
+
+**Output**
+
+```
+(no output)
+```
+
+`check()` is **never called**.
+
+---
+
+## MCQs
+
+**Q1**
+
+```cpp
+int x = 5;
+cout << x++ << endl;
+```
+
+**Answer:** 
+
+**Q2**
+
+```cpp
+int x = 5;
+cout << ++x << endl;
+```
+
+**Answer:** 
+
+**Q3**
+
+```cpp
+int a = 3, b = 7;
+cout << (a > b ? a : b);
+```
+
+**Answer:** 
+
+**Q4**
+
+Which type should be used for storing `10^18`?
+
+**Answer:** `long long`
+
+**Q5**
+
+```cpp
+int x = 0;
+
+if (x != 0 && ++x > 1)
+{
+}
+
+cout << x << endl;
+```
+
+**Answer:** `0`
+
+**Q6**
+
+```cpp
+int x = 0;
+
+if (x == 0 || ++x > 1)
+{
+}
+
+cout << x << endl;
+```
+
+**Answer:** `0`
+
+**Q7**
+
+```cpp
+int x = 0;
+
+if (x == 1 && ++x)
+{
+}
+
+cout << x << endl;
+```
+
+**Answer:** `0`
+
+---
+
+## Summary
+
+- `++x` and `x++` behave differently
+- Ternary operator replaces simple if–else
+- `int` has limits
+- `long long` prevents overflow
+
+
+
+## **What is a Variable?**
+
+A **variable** is a named memory location used to store data.
+
+```cpp
+int x = 10;
+```
+
+- `x` → variable name
+- `10` → value
+- `int` → data type
+
+Where a variable can be used is decided by its **scope**.
+
+## **What is Scope?**
+
+**Scope** defines:
+
+Where a variable is accessible in the program.
+
+If a variable is accessed outside its scope, it does not exist for the compiler.
+
+## **Why Do We Need Scope?**
+
+1. Avoid name conflicts
+2. Reduce memory usage
+3. Improve code readability
+4. Control variable lifetime
+
+## **Types of Scope in C++**
+
+**1. Local Scope**
+
+A variable declared inside a function is **local** to that function.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x = 10;
+    cout << x << endl;
+}
+```
+
+`x` is accessible only inside `main`.
+
+**Outside the Function**
+
+```cpp
+int main()
+{
+    int x = 10;
+}
+
+cout << x;   // Error
+```
+
+The variable `x` does not exist outside `main`.
+
+**2. Block Scope (if / loops)**
+
+Any variable declared inside `{}` belongs only to that block.
+
+**if block**
+
+```cpp
+int main()
+{
+    if (true)
+    {
+        int a = 5;
+        cout << a << endl;
+    }
+    cout << a;   // Error
+}
+```
+
+**Loop block**
+
+```cpp
+for(int i = 1; i <= 5; i++)
+{
+    cout << i << " ";
+}
+cout << i;  // Error
+```
+
+`i` exists only inside the loop.
+
+**3. Function Scope**
+
+Variables declared inside a function cannot be accessed outside it.
+
+```cpp
+void fun()
+{
+    int x = 100;
+    cout << x << endl;
+}
+
+int main()
+{
+    fun();
+    cout << x;   // Error
+}
+```
+
+**4. Global Scope**
+
+A variable declared outside all functions is a **global variable**.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int x = 50;
+
+void fun()
+{
+    cout << x << endl;
+}
+
+int main()
+{
+    cout << x << endl;
+    fun();
+}
+```
+
+**Output**
+
+```
+50
+50
+```
+
+Global variables are accessible everywhere in the program.
+
+**Caution with Global Variables**
+
+- Can be modified from anywhere
+- Makes debugging harder
+- Should be used sparingly
+
+**5. Local vs Global Variable (Same Name)**
+
+```cpp
+int x = 10;
+
+int main()
+{
+    int x = 20;
+    cout << x << endl;
+}
+```
+
+**Output**
+
+```
+20
+```
+
+Local variable takes precedence over the global variable.
+
+**Accessing Global Variable Explicitly**
+
+```cpp
+int x = 10;
+
+int main()
+{
+    int x = 20;
+    cout << ::x << endl;
+}
+```
+
+**Output**
+
+```
+10
+```
+
+`::` is called the **scope resolution operator**.
+
+**6. Nested Block Scope**
+
+```cpp
+int main()
+{
+    int x = 10;
+
+    {
+        int y = 20;
+        cout << x << " " << y << endl;
+    }
+
+    cout << x << endl;
+    cout << y;   // Error
+}
+```
+
+- Inner blocks can access outer variables
+- Outer blocks cannot access inner variables
+
+**7. Variable Shadowing**
+
+When a variable in an inner scope has the same name as one in an outer scope.
+
+```cpp
+int main()
+{
+    int x = 5;
+
+    if(true)
+    {
+        int x = 10;
+        cout << x << endl;
+    }
+
+    cout << x << endl;
+}
+```
+
+**Output**
+
+```
+10
+5
+```
+
+The inner `x` temporarily hides the outer `x`.
+
+**8. Scope vs Lifetime**
+
+| **Term** | **Meaning** |
+| --- | --- |
+| Scope | Where a variable can be accessed |
+| Lifetime | How long it exists in memory |
+
+```cpp
+void fun()
+{
+    int x = 10;
+}
+```
+
+- Scope: inside `fun()`
+- Lifetime: only while `fun()` executes
+
+**Common Beginner Mistakes**
+
+**Using Variable Before Declaration**
+
+```cpp
+cout << x;
+int x = 10;
+```
+
+Compilation error.
+
+**Assuming Loop Variable Exists Outside**
+
+```cpp
+for(int i = 0; i < 5; i++) {}
+cout << i;   // Error
+```
+
+**Accidentally Modifying Global Variables**
+
+```cpp
+int count = 0;
+
+void fun()
+{
+    count++;
+}
+```
+
+Hard to track changes in large programs.
+
+ **Example**
+
+```cpp
+int x = 10;
+
+void fun()
+{
+    int x = 20;
+    cout << x << endl;
+}
+
+int main()
+{
+    cout << x << endl;
+    fun();
+    cout << x << endl;
+}
+```
+
+**Output**
+
+```
+10
+20
+10
+```
+
+**Example**
+
+```cpp
+int main()
+{
+    int x = 5;
+    if(x > 0)
+    {
+        int y = 10;
+    }
+    cout << y;
+}
+```
+
+**Answer:** Compilation error (`y` is out of scope).
+
+## **Best Practices**
+
+1. Prefer local variables over global
+2. Keep variable scope as small as possible
+3. Avoid reusing variable names
+4. Use meaningful names
+5. Avoid unnecessary globals
+
+FUNCTIONS
+factorial
+Binomial Coefficient
+
+
+FUNCTIONS:-
+Set of statements
+Write only once
+Reuse it multiple times
+Makes code:
+Cleaner
+Shorter
+Easier to debug
+
+Function Syntax
+Return type what the function gives back
+Function name
+Parameters inputs
+Return statement
+
+
+Function Rules
+
+Number of Parameters Must Match
+Return Type Must Match
+Return Ends the Function
+A Function May or May Not Return
+int, double, bool returns value
+void prints only
