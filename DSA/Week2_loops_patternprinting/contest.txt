@@ -1,0 +1,244 @@
+By yashmmith, contest: Biweekly Contest - I, problem: (A) Hello Codeforces, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        cout<<"Hello Codeforces "<<i<<endl;
+        
+    }
+}
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (B) Is Vowel?, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    char n;
+    cin>>n;
+    vector<int>v1={'a','e','i','o','u'};
+    if (find(v1.begin(), v1.end(), n) != v1.end()) {
+        cout<< "YES" <<endl;
+    } else {
+        cout<< "NO" <<endl;
+    }
+    return 0;
+}
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (C) Second Last Digit, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int k=n%10;
+    n=n/10;
+    int ans=n%10;
+    cout<<ans;
+}
+ 
+
+
+
+
+ By yashmmith, contest: Biweekly Contest - I, problem: (D) Leap Year, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    if(n%100==0){
+        if(n%400==0){
+            cout<<"Yes";
+        }
+        else{
+            cout<<"No";
+        }
+    }
+    else if(n%100!=0 and n%4==0){
+        cout<<"Yes";
+    }
+    else{
+        cout<<"No";
+    }
+}
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (E) Count Good Numbers, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int count=0;
+    for(int i=1;i<=n;i++){
+        int k;
+        cin>>k;
+        if( (k != 0 && 18 % k == 0) || (k % 45 == 0) ){
+            count++;
+        }
+    }
+    cout<<count;
+}
+
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (F) FizzBuzz, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        if(i%3==0 and i%5==0){
+            cout<<"FizzBuzz"<<endl;
+        }
+        else if(i%3==0){
+            cout<<"Fizz"<<endl;
+        }
+        else if(i%5==0){
+            cout<<"Buzz"<<endl;
+        }
+        else{
+            cout<<i<<endl;
+        }
+        
+    }
+}
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (G) Count Zeros, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    long long n;
+    cin>>n;
+    if(n==0){
+        cout<<1;
+        return 0;
+    }
+    n=abs(n);
+    int count=0;
+    while(n){
+        if(n%10==0)count++;
+        n/=10;
+    }
+    cout<<count;
+}
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (H) Empty Rectangle, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,k;
+    cin>>n>>k;
+    int count=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<k;j++){
+            if(i==0 || i==n-1 || j==0 || j==k-1){
+                cout<<"^";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+ 
+
+
+
+ By yashmmith, contest: Biweekly Contest - I, problem: (I) Shifted Pyramid, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=0;j<i-1;j++)cout<<" ";
+        for(int j=0;j<i;j++)cout<<"x";
+        cout<<"\n";
+    }
+}
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (J) Hourglass, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int s=0;s<i;s++){
+            cout<<" ";
+        }
+        for(int j=0;j<n-i;j++){
+            cout<<".";
+            if(j<n-i-1)cout<<" ";
+        }
+        cout<<endl;
+    }
+    for(int i=n-2;i>=0;i--){
+        for(int s=0;s<i;s++){
+            cout<<" ";
+        }
+            for(int j=0;j<n-i;j++){
+            cout<<".";
+            if(j<n-i-1)cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+By yashmmith, contest: Biweekly Contest - I, problem: (K) Arrow, Accepted, #, Copy
+ #include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int s=0;s<i;s++){
+            cout<<" ";
+        }
+        cout<<">";
+        if(i>0){
+            for(int s=0;s<2*i-1;s++){
+                cout<<" ";
+            }
+            cout<<">";
+        }
+        cout<<endl;
+    }
+    for(int i=n-2;i>=0;i--){
+        for(int s=0;s<i;s++){
+            cout<<" ";
+        }
+        cout<<">";
+        if(i>0){
+            for(int s=0;s<2*i-1;s++){
+                cout<<" ";
+            }
+            cout<<">";
+        }
+        cout<<endl;
+    }
+}
