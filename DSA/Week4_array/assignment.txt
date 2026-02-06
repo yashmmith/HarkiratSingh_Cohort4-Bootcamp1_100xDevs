@@ -226,4 +226,290 @@ int main() {
 
 
 
-10)
+10)By yashmmith, contest: Arrays, problem: (H) Sort 01, Accepted, #, Copy
+ #include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int no;
+    cin >> no;
+    for(int j=0;j<no;j++){
+        int sn;
+        cin>>sn;
+        long long arr1[sn];
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+        int ones=0;
+        int zeros=0;
+        for (int i = 0; i < sn; i++) {
+            if(arr1[i]==1){
+                ones++;
+            }
+            else{
+                zeros++;
+            }
+        }
+        for(int i=0;i<zeros;i++){
+            cout<<0<<" ";
+        }
+        for(int i=0;i<ones;i++){
+            cout<<1<<" ";
+    }
+        cout<<endl;
+    }
+}
+
+
+
+
+
+11)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        int n;
+        cin >> n;
+
+        // Print odd numbers (increasing)
+        for (int i = 1; i <= n; i += 2) {
+            cout << i << " ";
+        }
+
+        // Print even numbers (decreasing)
+        for (int i = n; i >= 2; i--) {
+            if (i % 2 == 0) {
+                cout << i << " ";
+            }
+        }
+
+        cout << "\n";
+    }
+
+    return 0;
+}
+
+
+
+
+
+12)By yashmmith, contest: Arrays, problem: (K) Swap Alternate, Accepted, #, Copy
+ #include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int no;
+    cin >> no;
+    for(int j=0;j<no;j++){
+        int sn;
+        cin>>sn;
+        long long arr1[sn];
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+        int si=0,se=1;
+        int size1=sizeof(arr1) / sizeof(arr1[0]);
+        while(se<size1){
+            int temp=arr1[si];
+            arr1[si]=arr1[se];
+            arr1[se]=temp;
+            se+=2;
+            si+=2;
+        }
+        for (int i = 0; i < sn; i++) {
+            cout<< arr1[i]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+13)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int no;
+    cin >> no;
+    for(int j=0;j<no;j++){
+        int sn;
+        cin>>sn;
+        long long arr1[sn];
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+        for(int k=0;k<sn;k++){
+            int pn=arr1[k];
+            int count=0;
+            for(int f=0;f<sn;f++){
+                if(pn==arr1[f]){
+                    count++;
+                }
+            }
+            if(count==1){
+                cout<<pn;
+            }
+            
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+14)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int no;
+    cin >> no;
+    for(int j=0;j<no;j++){
+        int sn;
+        cin>>sn;
+        long long arr1[sn];
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+        for(int k=0;k<sn;k++){
+            int pn=arr1[k];
+            int count=0;
+            for(int f=0;f<sn;f++){
+                if(pn==arr1[f]){
+                    count++;
+                }
+            }
+            if(count==2){
+                cout<<pn;
+                break;
+            }
+            
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+
+15)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int no;
+    cin >> no;
+
+    while(no--) {
+        int sn;
+        cin >> sn;
+
+        vector<long long> arr1(sn);
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+
+        long long fe;
+        cin >> fe;
+
+        int count = 0;
+
+        for(int i = 0; i < sn; i++){
+            for(int u = i + 1; u < sn; u++){
+                for(int p = u + 1; p < sn; p++){
+                    if(arr1[i] + arr1[u] + arr1[p] == fe){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        cout << count << endl;
+    }
+}
+
+
+
+
+
+
+16)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int no;
+    cin >> no;
+    while(no--) {
+        int sn;
+        cin >> sn;
+        vector<long long> arr1(sn);
+        for (int i = 0; i < sn; i++) {
+            cin >> arr1[i];
+        }
+        long long fe;
+        cin >> fe;
+        int count = 0;
+        for(int i = 0; i < sn; i++){
+            for(int u = i + 1; u < sn; u++){
+                if(arr1[i] + arr1[u] == fe){
+                    count++;
+                }
+            }
+        }
+        cout << count << endl;
+    }
+}
+
+
+
+
+
+17)#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        int N;
+        cin >> N;
+
+        vector<int> A(N);
+        for (int i = 0; i < N; i++) {
+            cin >> A[i];
+        }
+
+        int M;
+        cin >> M;
+
+        unordered_map<int, int> freq;
+        for (int i = 0; i < M; i++) {
+            int x;
+            cin >> x;
+            freq[x]++;
+        }
+
+        bool printed = false;
+        for (int i = 0; i < N; i++) {
+            if (freq[A[i]] > 0) {
+                cout << A[i] << " ";
+                freq[A[i]]--;
+                printed = true;
+            }
+        }
+
+        if (!printed) {
+            cout << "";
+        }
+
+        cout << "\n";
+    }
+
+    return 0;
+}
+
